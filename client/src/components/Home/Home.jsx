@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterCreated, filterGenre, getVideogames, orderName } from "../../actions/index";
 import Card from "../Card/card";
-import './Home.css'
-
+import './Home.css';
+import '../Card/card.css'
+import Paginacion from '../paginacion/paginacion';
 
 
 
@@ -16,12 +17,12 @@ export default function Home (){
    
     const [orden,setOrden]= useState('')
     const [currentPage, setCurrentPage] = useState(1)
-    //const [pokemonsPerPage] = useState(6)
-    //const indexOfLastPokemon = currentPage * pokemonsPerPage // 6
-    //const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage // 0
-    
-    
-    const pagin =(pageNumber) => {
+    const [gamePerPage] = useState(15)
+    const indexOfLastGame = currentPage * gamePerPage // 6
+    const indexOfFirstGame = indexOfLastGame - gamePerPage // 0
+    const currentGame = allVideogames.slice(indexOfFirstGame, indexOfLastGame )
+    console.log(currentGame)
+    const paginacion =(pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
@@ -77,14 +78,23 @@ return (
            </select>
 
            </div>
-
+           {console.log(currentGame)}
         </div>
+        <Paginacion 
+        gamePerPage= {gamePerPage}
+        allVideogames={allVideogames.length}
+        paginacion={paginacion}/>
+           
+           <div className="container">
           {
-                allVideogames?.map((el , index) => {
+          
+
+                currentGame?.map((el , index) => {
                     return(
                         <div className="cardContainer" key={index}>
                             <Card name={el.name}
-                            img={el.img}/>
+                            img={el.img}
+                            genres={el.genres}/>
                     
                     </div>        
                     
@@ -95,7 +105,7 @@ return (
 
             
             }
-
+                </div>
 
         </div>
         

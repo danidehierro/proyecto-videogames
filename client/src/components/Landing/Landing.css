@@ -1,0 +1,31 @@
+.landing{
+    
+    
+    background-size:cover;
+    background-repeat: no-repeat;
+    text-shadow: 4px 3px 2px black;
+    margin:0;
+    font-size: 2rem;
+    color:blue;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction:column;
+    font-family:Georgia;
+
+}
+.botton{
+  background-color: rgba(2, 2, 2, 0.573);
+  border-color: #069cedb5;
+  color:aliceblue;
+  text-shadow: 3px 3px 3px black;
+  border-inline-end-style: groove;
+  font-size: xx-large;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.botton:hover{
+    color:blue;
+    border-color: beige;
+    pointer-events:painted;
+}

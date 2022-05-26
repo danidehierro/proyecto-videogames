@@ -1,6 +1,6 @@
 const axios = require("axios");
 const express = require("express");
-const { Generos } = require("../db");
+const { Genres } = require("../db");
 const { API_KEY } = process.env;
 const router = express.Router();
 
@@ -12,12 +12,12 @@ router.get("/", async (req, res) => {
   const id = genreApi.data.results.map((e) => e.id);
 
   genre.forEach((e, i) => {
-    Generos.findOrCreate({
+    Genres.findOrCreate({
       where: { name: e, id: id[i] },
     });
   });
 
-  const allGenres = await Generos.findAll({ order: [["name", "ASC"]] });
+  const allGenres = await Genres.findAll({ order: [["name", "ASC"]] });
   res.send(allGenres);
 });
 

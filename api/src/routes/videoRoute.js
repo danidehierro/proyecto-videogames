@@ -1,6 +1,6 @@
 const express = require("express");
 const { getAllVideogames, getAllVideogameDetail } = require("./controlador");
-const { Videogame, Generos} = require("../db");
+const { Videogame, Genres} = require("../db");
 
 const router = express.Router();
 
@@ -44,14 +44,14 @@ router.post("/", async (req, res) => {
           platforms,
           genres,
         });
-        const genreDb = await Generos.findAll({
+        const genreDb = await Genres.findAll({
           where: { name: genres },
         });
 
         /* const platformDb = await Platform.findAll({
           where: { name: platforms },
         }); */
-        await videogame.addGeneros(genreDb), videogame.addPlatform(platformDb);
+        await videogame.addGenres(genreDb)//, videogame.addPlatform(platformDb);
         res.status(201).send("Video Game created successfully");
       }
       res.status(404).send("Videogame name already exist");

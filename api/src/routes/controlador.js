@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Videogame, Generos} = require("../db");
+const { Videogame, Genres} = require("../db");
 const { API_KEY } = process.env;
 
 const url = `https://api.rawg.io/api/games?key=${API_KEY}`;
@@ -59,18 +59,18 @@ const getVideogameDetail = async (id) => {
       img: data.background_image,
       description: data.description_raw,
     };
-
+    console.log(videogameData)
     return videogameData;
   } catch (e) {
     console.log(e);
   }
 };
-
+// TRAE TODOS LOS VIDEOGAME CON EL GENERO AL QUE PERTENECEN
 const getDbInfo = async () => {
   return await Videogame.findAll({
     include: [
       {
-        model: Generos,
+        model: Genres,
         attributes: ["name"],
         through: {
           attributes: [],

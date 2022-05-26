@@ -79,7 +79,7 @@ export function getAllGenres(){
 
 
 export function filterGenre(payload){
-   // console.log(payload)
+    console.log("soy la accion",payload)
     return {
         type: FILTER_GENRE,
         payload

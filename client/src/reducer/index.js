@@ -16,6 +16,7 @@ import {GET_VIDEOGAMES,
 const initialState = {
     videogames: [],
     allVideogames: [],
+    //allVideogames2:[],
     genres: [],
     platforms: [],
     videogameDetail: [],
@@ -28,6 +29,7 @@ const initialState = {
           ...state,
           videogames: action.payload,
           allVideogames: action.payload,
+          //allVideogames2: action.payload
         };
   
       case CLEAN_VIDEOGAMES:
@@ -118,6 +120,7 @@ const initialState = {
           videogames: action.payload,
         };
       case GET_DETAILS:
+        console.log("soy el reducer detail", action.payload)
         return {
           ...state,
           videogameDetail: action.payload,

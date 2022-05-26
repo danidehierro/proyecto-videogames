@@ -1,0 +1,29 @@
+.detailContainer{
+    background-color: rgba(144, 197, 243, 0.541);
+    background-size:contain;
+}
+
+.loading{
+    background-color: aqua;
+    border-radius: 15px;
+}
+.detail{
+    
+    grid-template-columns: 50%;
+    grid-template-rows: max-content;
+    font-family: cursive;
+
+}
+h2,h3{
+    
+    justify-content:flex-end;
+    color: brown;
+    margin: 0%;
+}
+
+
+.imgdetail{
+    
+     height: 350px;
+    width:400px ;
+}

@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let { name, description, released, rating, platforms, genres, img } =
+  let { name, description, released, rating,img, platforms, genres } =
     req.body;
   try {
     if (name) {
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
           rating,
           img,
           platforms,
-          genres,
+          genres
         });
         const genreDb = await Genres.findAll({
           where: { name: genres },
@@ -52,13 +52,12 @@ router.post("/", async (req, res) => {
           where: { name: platforms },
         }); */
         await videogame.addGenres(genreDb)//, videogame.addPlatform(platformDb);
-        res.status(201).send("Video Game created successfully");
+        res.send("VideoGame created successfully");
       }
-      res.status(404).send("Videogame name already exist");
     }
     if (!name) return res.status(404).send("Videogame name is obligtory");
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
   router.delete("/:id", async (req, res) => {
     let { id } = req.params;

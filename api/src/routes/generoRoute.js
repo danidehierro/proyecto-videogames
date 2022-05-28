@@ -11,9 +11,9 @@ router.get("/", async (req, res) => {
   const genre = genreApi.data.results.map((e) => e.name);
   const id = genreApi.data.results.map((e) => e.id);
 
-  genre.forEach((e, i) => {
+  genre.forEach((e) => {
     Genres.findOrCreate({
-      where: { name: e, id: id[i] },
+      where: { name: e},
     });
   });
 

@@ -5,11 +5,15 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('genres', {
     name: {
+      
       type: DataTypes.STRING,
       allowNull: false,
+      primaryKey: true,
     },
   }),
-  {timestamps: false}
+  {timestamps: false,
+    createdAt: false,
+    updatedAt: false}
 };
 
 

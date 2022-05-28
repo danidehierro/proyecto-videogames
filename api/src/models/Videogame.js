@@ -24,6 +24,9 @@ module.exports = (sequelize) => {
     rating: {
       type: DataTypes.TEXT,
     },
+    img:{
+      type: DataTypes.TEXT,
+    },
     platforms:{
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false
@@ -37,6 +40,8 @@ module.exports = (sequelize) => {
   },
     {
       timestamps:false,
+      createdAt: false,
+      updatedAt: false
     },
   
    );

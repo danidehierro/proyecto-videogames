@@ -16,10 +16,10 @@ import {GET_VIDEOGAMES,
 const initialState = {
     videogames: [],
     allVideogames: [],
-    //allVideogames2:[],
     genres: [],
     platforms: [],
-    videogameDetail: [],
+    Detail: [],
+    allDea:[]
   };
   
   function rootReducer(state = initialState, action) {
@@ -29,7 +29,7 @@ const initialState = {
           ...state,
           videogames: action.payload,
           allVideogames: action.payload,
-          //allVideogames2: action.payload
+          
         };
   
       case CLEAN_VIDEOGAMES:
@@ -63,33 +63,18 @@ const initialState = {
         }
         return {
           ...state,
-          videogames: createdFiltered //.length === 0 ? copy : createdFiltered,
+          videogames: createdFiltered //length === 0 ? copy : createdFiltered,
         };
       case FILTER_GENRE:
-        let copyTwo = state.videogames;
-        let genreFiltered =
-          action.payload === "all"
-            ? copyTwo
-            : copyTwo.filter((e) => {
-                if (!e.createdInDb) {
-                  if (e.genres.some((e) => e === action.payload)) {
-                    return e;
-                  }
-                } else if (e.createdInDb) {
-                  if (e.genres.some((e) => e.name === action.payload)) {
-                    return e;
-                  }
-                }
-                return false;
-              });
-        if (genreFiltered.length <= 0) {
-          genreFiltered = copyTwo;
-          alert("There are no videogames of the indicated genre");
-        }
-        return {
+         state.videogames = state.allVideogames;
+         let genresFiltered = action.payload === 'All' ?  state.allVideogames :  state.allVideogames.filter(el => el.genres.map(e => e).includes(action.payload)) 
+         while(genresFiltered.length !== 0){
+        return{
           ...state,
-          videogames: genreFiltered,
-        };
+          videogames: genresFiltered
+          
+      }}
+      alert("I don't know found the genre of videoGame")
       case ORDER_NAME:
         let copy3 = state.videogames;
         let sortedName =
@@ -123,12 +108,12 @@ const initialState = {
         console.log("soy el reducer detail", action.payload)
         return {
           ...state,
-          videogameDetail: action.payload,
+          Detail: action.payload,
         };
       case CLEAN_DETAIL:
         return {
           ...state,
-          videogameDetail: action.payload,
+          allVideogames: action.payload,
         };
       case POST_VIDEOGAME:
         return {

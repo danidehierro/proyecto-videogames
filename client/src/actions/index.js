@@ -61,21 +61,21 @@ export function getAllGenres(){
         };
       };
 
-    export function postVideogame(payload){
-        return async function(dispatch){
-            try {
-                var data = await axios.post("http://localhost:3001/videogames",payload);
-                return { 
-                    type: POST_VIDEOGAME,
-                    data
-                }
-            } catch (error) {
-                 console.log(error)
-            
-           
-            }
-        }
-    }
+      export function postVideogame(payload){
+        return async () => {
+          try {
+            var createVideogame = await axios.post(
+              "http://localhost:3001/videogames",
+              payload
+            );
+            alert("New videogame is created!");
+            return createVideogame;
+          } catch (e) {
+            alert("Videogame name already exist");
+            console.log(e);
+          }
+        };
+      }; 
 
 
 export function filterGenre(payload){

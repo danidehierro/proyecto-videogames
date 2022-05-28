@@ -1,14 +1,14 @@
 .Card{
     display: grid;
     grid-template-columns: 190px;
-    grid-template-rows: 40px 40px;
-    justify-content:center;
+    grid-template-rows: 25px ;
+    
     
     width: 180px;
     height: 280px;
-    border-radius: 20px;
+    
     color:rgb(182, 171, 171);
-    background-color: rgba(68, 132, 230, 0.658);
+    background-color: rgba(68, 133, 230, 0.226);
     margin: 10px;
     padding: 20px;
     
@@ -53,11 +53,16 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: oblique;
     font-size:larger;
-    margin: 10px;
+    margin: -7px;
 
 }
 .generos{
-    display: flex;
-    align-items: flex-end;
+   display: flex;
+   
+    margin: -15px;
     color:rgb(3, 3, 3);
+}
+.generos2{
+   
+    color:black;
 }

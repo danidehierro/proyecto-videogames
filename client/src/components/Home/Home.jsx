@@ -14,6 +14,8 @@ import Search from "../Search/search";
 export default function Home (){
     const dispatch = useDispatch()
     const allVideogames = useSelector((state) => state.videogames)
+    
+    const allVideogames1 = useSelector((state) => state.allVideogames)
     const genRes = useSelector((state) => state.genres)
    
     const [orden,setOrden]= useState('')
@@ -55,6 +57,7 @@ export default function Home (){
     }
     function handleFilterCreated(e){
         dispatch(filterCreated(e.target.value))
+        setCurrentPage(1);
     }
 
 return (
@@ -120,7 +123,7 @@ return (
                             name={el.name}
                             img={el.img}
                             genres={el.genres}
-                       
+                             createdInDb={el.createdInDb}
                         rating={el.rating}/>
                          
                     </Link>
@@ -128,7 +131,8 @@ return (
                     
                     );
 
-                }): <div><h1> LOADING.... </h1> </div>
+                }): <div> 
+                <img src="https://cdna.artstation.com/p/assets/images/images/004/246/414/original/danielle-iannarelli-loadinganimation.gif?1481688075" alt="#"/></div>
                    
 
             

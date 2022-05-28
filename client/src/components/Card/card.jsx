@@ -8,13 +8,13 @@ export default function Card({name,img,genres,rating}){
             <div className="Card">
                 <h4 className="cardTitle">{name}</h4>
                 <img src={img} alt="img not found" className="image" />
-                <h5 className="generos">{genres.map(el => el).join(', ')}</h5>
+                <h5 className="generos2">{genres.map(el => el.name? el.name : el).join(', ')}</h5>
                 <h5 className="generos"> {rating}</h5>
             </div>
 
 
 
-        )
+        ) 
 
 
 

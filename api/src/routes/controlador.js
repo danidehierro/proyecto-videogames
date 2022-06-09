@@ -6,7 +6,7 @@ const url = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
 const getApiInfo = async () => {
   let apiUrl1 = [],
-    apiUrl2 = [],
+    apiUrl2 = [];
     apiUrl3 = [],
     apiUrl4 = [],
     apiUrl5 = [];
@@ -59,7 +59,7 @@ const getVideogameDetail = async (id) => {
       img: data.background_image,
       description: data.description_raw,
     };
-    console.log(videogameData)
+   
     return videogameData;
   } catch (e) {
     console.log(e);

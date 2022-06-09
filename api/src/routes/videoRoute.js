@@ -48,9 +48,7 @@ router.post("/", async (req, res) => {
           where: { name: genres },
         });
 
-        /* const platformDb = await Platform.findAll({
-          where: { name: platforms },
-        }); */
+        
         await videogame.addGenres(genreDb)//, videogame.addPlatform(platformDb);
         res.send("VideoGame created successfully");
       }

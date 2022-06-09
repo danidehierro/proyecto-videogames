@@ -14,8 +14,6 @@ import Search from "../Search/search";
 export default function Home (){
     const dispatch = useDispatch()
     const allVideogames = useSelector((state) => state.videogames)
-    
-    const allVideogames1 = useSelector((state) => state.allVideogames)
     const genRes = useSelector((state) => state.genres)
    
     const [orden,setOrden]= useState('')
@@ -23,8 +21,8 @@ export default function Home (){
     const [gamePerPage] = useState(15)
     const indexOfLastGame = currentPage * gamePerPage // 6
     const indexOfFirstGame = indexOfLastGame - gamePerPage // 0
-    const currentGame = allVideogames.slice(indexOfFirstGame, indexOfLastGame )
-    console.log(currentGame)
+    const currentGame = allVideogames?allVideogames.slice(indexOfFirstGame, indexOfLastGame ):false
+    
     const paginacion =(pageNumber) => {
         setCurrentPage(pageNumber)
     }
@@ -37,6 +35,7 @@ export default function Home (){
         dispatch(getAllGenres());
       }, [dispatch]);
 
+    
   
     function handleSort (e){
         e.preventDefault();
@@ -66,39 +65,34 @@ return (
   <Link to= '/create'>
       <button className="my_button">Create</button>
   </Link>
-  <h1 className="titlehome"> APP VIDEOGAMES </h1>
-    
+  <Link  to= '/'>
+  <button className="my_button"> start over </button>
+  </Link>
     <div>
         <div className="search">
-        <select onChange={e => handleSort(e)}>
+        <select className="abc" onChange={e => handleSort(e)}>
            <option value= 'asc'> A to Z  </option>
            <option value= 'des'> Z to A </option>
            </select>
            
-           <select onChange={e => handleSort2(e)}>
+           <select className="abc" onChange={e => handleSort2(e)}>
            <option value= 'asc'> For Low rating </option>
            <option value= 'des'> BY High rating </option>
            </select>
-           <select onChange={e => handleFilterCreated(e)}>
+           <select className="abc" onChange={e => handleFilterCreated(e)}>
             <option value= 'All'> All Videogames </option>
             <option value= 'api'> Existing </option>
             <option value= 'created'> Created  </option>
            </select>
              
-             <select onChange={e => handleFilterGenres(e) }>
+             <select className="abc" onChange={e => handleFilterGenres(e) }>
              <option value='All'>All</option>
-             {genRes?.map(el => {
+             {genRes?.map((el,index) => {
                  return(
-                     <option key={el.id} value={el.name}>{el.name}</option>
+                     <option key={index} value={el.name}>{el.name}</option>
                  )
              })}
-             
-            
              </select>
-            
-            
-
-          
 
            <Search/>
            </div>
@@ -113,7 +107,7 @@ return (
           {
           
 
-          currentGame.length > 0  ?  currentGame.map((el , index) => {
+     currentGame && currentGame.length > 0  ?  currentGame.map((el , index) => {
                     return(
                         
                         <div className="cardContainer" key={index}>
@@ -132,7 +126,7 @@ return (
                     );
 
                 }): <div> 
-                <img src="https://cdna.artstation.com/p/assets/images/images/004/246/414/original/danielle-iannarelli-loadinganimation.gif?1481688075" alt="#"/></div>
+                <img src="https://i.stack.imgur.com/hzk6C.gif" alt="#" width={"400vh"} height={"300vh"} /></div>
                    
 
             

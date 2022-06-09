@@ -1,6 +1,10 @@
 .detailContainer{
-    background-color: rgba(144, 197, 243, 0.541);
+    display: flex;
+    justify-content: center;
+    align-items: centerq;
+    background-color: rgb(10, 10, 10);
     background-size:contain;
+    color: #eea114;
 }
 
 .loading{
@@ -17,7 +21,7 @@
 h2,h3{
     
     justify-content:flex-end;
-    color: brown;
+    
     margin: 0%;
 }
 
@@ -27,3 +31,23 @@ h2,h3{
      height: 350px;
     width:400px ;
 }
+.btndet {
+    margin-top: 3vh;
+    text-decoration: none;
+    width: 8vw;
+    height: 5vh;
+    background-color: #324c36a8;
+    color: #eea114;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
+    font-family: "Verdana", sans-serif;
+    font-size: 0.98rem;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .btndet:hover {
+    color: #324c36a8;
+    background-color: rgba(240, 151, 68, 0.849);
+  }

@@ -1,14 +1,16 @@
 .containervc {
+    
+  background-color: rgba(0, 0, 0, 0.315);
+  background-image: url('../Landing/image/castillo.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 15vw;
-    width: 70vw;
-    height: 100%;
-    border-radius: 10px;
     padding: 10px;
-    gap: 10px;
+    padding-top: 10px; 
   }
   
   .form {
@@ -16,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #f3cf3d4d;
+    border: 1px solid #e2b087fb;
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
     border-radius: 5px;
     width: 50%;
@@ -29,7 +31,7 @@
   .h2 {
     font-family: "Verdana", sans-serif;
     font-size: 1.5rem;
-    color: rgb(255, 217, 2);
+    color: rgba(189, 155, 104, 0.788);
   }
   
   .div {
@@ -57,7 +59,7 @@
     font-family: "Verdana", sans-serif;
     font-size: 1rem;
     font-weight: 300;
-    color: rgb(255, 217, 2);
+    color: rgb(17, 17, 15);
     margin-bottom: 1vh;
   }
   
@@ -114,7 +116,7 @@
     width: 8vw;
     height: 5vh;
     background-color: #324c36a8;
-    color: rgb(255, 217, 2);
+    color: #eea114;
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
@@ -126,7 +128,7 @@
   
   .btn:hover {
     color: #324c36a8;
-    background-color: rgb(255, 217, 2);
+    background-color: rgba(240, 151, 68, 0.849);
   }
   
   .btnCreate {
@@ -146,14 +148,14 @@
   }
   
   .btnCreate:hover {
-    color: #324c36a8;
-    background-color: rgb(255, 217, 2);
+    color: #090a09;
+    background-color: rgba(255, 166, 2, 0.658);
   }
   
   .pTypes {
     font-family: "Verdana", sans-serif;
     font-size: 1rem;
-    color: rgb(255, 217, 2);
+    color: rgb(12, 11, 7);
     margin-right: 0.5vw;
   }
   
@@ -162,7 +164,7 @@
     width: 1vw;
     height: 2vh;
     background-color: #324c36a8;
-    color: rgb(255, 217, 2);
+    color: rgb(255, 2, 2);
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
@@ -174,7 +176,7 @@
   
   .btnDelete:hover {
     color: #324c36a8;
-    background-color: rgb(255, 217, 2);
+    background-color: white;
   }
   
   .element {

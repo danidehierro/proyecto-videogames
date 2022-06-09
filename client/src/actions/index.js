@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export const GET_VIDEOGAMES = "getvideogames";
 export const GET_ALLGENRES =  "getallgenres";
@@ -12,7 +13,8 @@ export const FILTER_CREATED = "filtercreated";
 export const ORDER_NAME = "ordername";
 export const ORDER_RATING = "orderrating"
 export const CLEAN_VIDEOGAMES = "cleanvideogames"
-
+export const ADD_VIDEOGAMES = "addvideogames"
+export const NEW_GAME= "newgame"
 export function getVideogames(){
     return async function(dispatch){
       try {
@@ -47,7 +49,8 @@ export function getAllGenres(){
        console.log(error)
    }
     }}
-    export function getAllPlatforms(){
+
+ export function getAllPlatforms(){
         return async (dispatch) => {
           try {
             let json = await axios.get("http://localhost:3001/platforms");
@@ -61,13 +64,15 @@ export function getAllGenres(){
         };
       };
 
-      export function postVideogame(payload){
-        return async () => {
+    export function postVideogame(payload){
+        return async (dispatch) => {
           try {
-            var createVideogame = await axios.post(
-              "http://localhost:3001/videogames",
-              payload
-            );
+            var createVideogame = await axios.post("http://localhost:3001/videogames",payload);
+            console.log("soy la accion",payload)
+               return dispatch({
+                type: ADD_VIDEOGAMES,
+                payload: payload
+            })
             alert("New videogame is created!");
             return createVideogame;
           } catch (e) {
@@ -104,16 +109,17 @@ export function orderRating(payload){
         payload
     }
 }
+/* const nameV = useSelector(elem => elem.allVideogames) */
 
 export function getNameVideogame(name){
     return async function (dispatch){
         try {
-            var json = await axios.get(`http://localhost:3001/videogames?name=${name}`);
-            console.log(json.data)
-            if(json.data === "error")throw Error
+            
+           /*  var json = await axios.get(`http://localhost:3001/videogames?name=${name}`); */
+            /* if(json.data === "error")throw Error */
             return dispatch({
                 type: GET_NAME_VIDEOGAME,
-                payload: json.data
+                payload: name
             })
         } catch (error){
             alert("Videogame not found");
@@ -127,13 +133,22 @@ export function getNameVideogame(name){
 export function getDetail(id){
     return async function (dispatch){
         try {
+            console.log(id)
+            if(id){
             var json = await axios.get(`http://localhost:3001/videogames/${id}`);
             console.log("soy el det de accion",json.data)
             return dispatch({
                 type: GET_DETAILS,
                 payload: json.data
                 
-            })
+            })}else{
+                console.log("aca se ejecuto")
+                return dispatch({
+                    type: NEW_GAME,
+                    
+                  });
+
+            }
             
             } catch (error) {
             console.log(error)
@@ -141,9 +156,4 @@ export function getDetail(id){
         }
     }
 }
-export const cleanDetail = (dispatch) => {
-    return dispatch({
-      type: CLEAN_DETAIL,
-      payload: [],
-    });
-  };
+

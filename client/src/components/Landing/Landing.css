@@ -1,12 +1,12 @@
 .landing{
     
-    
+    background-image: url("./image/home.jpg");
     background-size:cover;
     background-repeat: no-repeat;
     text-shadow: 4px 3px 2px black;
     margin:0;
     font-size: 2rem;
-    color:blue;
+    color:rgb(0, 255, 242);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,6 +15,15 @@
     font-family:Georgia;
 
 }
+.titleland{
+  color:rgb(255, 0, 0);
+  text-shadow: whitesmoke;
+}
+.titleland:hover{
+  color:aquamarine;
+  text-shadow: 4px 4px 4px black;
+}
+
 .botton{
   background-color: rgba(2, 2, 2, 0.573);
   border-color: #069cedb5;
@@ -25,7 +34,8 @@
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
 .botton:hover{
-    color:blue;
+    color:rgb(255, 0, 0);
     border-color: beige;
     pointer-events:painted;
+    text-shadow: 5px 5px 5px black;
 }

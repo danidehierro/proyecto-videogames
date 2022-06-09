@@ -58,7 +58,8 @@ const VideogameCreate = () => {
 
     if (!validateUrl.test(input.img)) {
       errors.img = "URL required";
-    }
+    } 
+   
     return errors;
   };
 
@@ -76,7 +77,8 @@ const VideogameCreate = () => {
   };
 
   const handleSelect = (e) => {
-    if (input.genres.length < 2) {
+    if (input.genres.length < 2)
+       {
       setInput({
         ...input,
         genres: [...input.genres, e.target.value],
@@ -107,8 +109,10 @@ const VideogameCreate = () => {
       !errors.rating &&
       !errors.released &&
       !errors.description &&
-      !errors.img
-    ) {
+      !errors.img 
+     
+       
+    ) { 
       dispatch(postVideogame(input));
       setInput({
         name: "",
@@ -231,23 +235,23 @@ const VideogameCreate = () => {
             }}
           >
             <option>Select Genre</option>
-            {genres?.map((e) => {
+            {genres?.map((el, index) => {
               return (
-                <option key={e.id} value={e.name}>
-                  {e.name}
+                <option key={index} value={el.name}>
+                  {el.name}
                 </option>
               );
             })}
           </select>
-          {console.log(genres)}
-          {input.genres?.map((e) => {
+          
+          {input.genres?.map((el, index) => {
             return (
-              <div className="typesSelect" key={e}>
-                <p className="pTypes">{e}</p>
+              <div className="typesSelect" key={index}>
+                <p className="pTypes">{el}</p>
                 <button
                   className="btnDelete"
                   onClick={() => {
-                    handleDelete(e);
+                    handleDelete(el);
                   }}
                 >
                   X
@@ -259,28 +263,28 @@ const VideogameCreate = () => {
         <div className="element">
           <select
             className="select"
-            onChange={(e) => {
-              handleSelect1(e);
+            onChange={(el) => {
+              handleSelect1(el);
             }}
           >
             <option>Select Platform</option>
-            {platforms?.map((e) => {
+            {platforms?.map((el, index) => {
               return (
-                <option key={e.id} value={e}>
-                  {e}
+                <option key={index} value={el}>
+                  {el}
                 </option>
               );
             })}
           </select>
-         { console.log(platforms)}
-          {input.platforms?.map((e) => {
+         
+          {input.platforms?.map((el) => {
             return (
-              <div key={e}>
-                <p className="pTypes">{e}</p>
+              <div key={el}>
+                <p className="pTypes">{el}</p>
                 <button
                   className="btnDelete"
                   onClick={() => {
-                    handleDelete(e);
+                    handleDelete(el);
                   }}
                 >
                   X

@@ -14,7 +14,7 @@ export default function Paginacion({gamePerPage, allVideogames,paginacion}){
                 <ul className='pagin'>
                         {pageNumbers && pageNumbers.map(number =>(
                             <li className='number' key={number}>
-                            <button onClick={() => paginacion(number)}> {number}
+                            <button className='number' onClick={() => paginacion(number)}> {number}
                             </button>
                             </li>
                         ))}

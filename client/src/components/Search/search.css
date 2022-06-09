@@ -1,0 +1,11 @@
+.btnserch{
+    background-color: rgba(53, 136, 245, 0.486);
+}
+.btnserch:hover{
+    color:aqua;
+    text-shadow: whitesmoke 3px 3px 3px;
+}
+.search2{
+    background-color: rgba(128, 128, 128, 0.432);
+    color: beige;
+}

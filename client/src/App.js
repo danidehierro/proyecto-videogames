@@ -5,6 +5,7 @@ import Landing from './components/Landing/landing'
 import Home from './components/Home/Home'
 import Detail from './components/Detail/detail';
 import VideogameCreate from './components/VgameCreate/vgameCreate';
+
 function App() {
   return (
     <div className="App">

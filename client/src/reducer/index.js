@@ -9,7 +9,9 @@ import {GET_VIDEOGAMES,
     FILTER_GENRE,
     FILTER_CREATED,
     ORDER_NAME,
-    ORDER_RATING} from '../actions/index';
+    ORDER_RATING,
+    ADD_VIDEOGAMES,
+    NEW_GAME} from '../actions/index';
 
 
 
@@ -31,6 +33,22 @@ const initialState = {
           allVideogames: action.payload,
           
         };
+        case NEW_GAME:
+            let caca = state.allVideogames.find(el => el.isnew)
+           console.log("soy una caca",caca)
+          return{
+            ...state
+
+          }
+        case ADD_VIDEOGAMES:
+          console.log("soy el reducer",action.payload)
+          return {
+            ...state,
+            videogames: [...state.allVideogames,{...action.payload,createdInDb:true,isnew:true}],
+            allVideogames: [...state.allVideogames,{...action.payload,createdInDb:true,isnew:true}] 
+
+          }
+
   
       case CLEAN_VIDEOGAMES:
         return {
@@ -49,6 +67,7 @@ const initialState = {
           platforms: action.payload,
         };
       case FILTER_CREATED:
+        console.log("filtro reducer", action.payload)
         let copy = state.allVideogames;
         let createdFiltered;
         if (action.payload === "created") {
@@ -61,6 +80,7 @@ const initialState = {
         } else {
           createdFiltered = copy;
         }
+        console.log(createdFiltered)
         return {
           ...state,
           videogames: createdFiltered //length === 0 ? copy : createdFiltered,
@@ -68,22 +88,29 @@ const initialState = {
       case FILTER_GENRE:
          state.videogames = state.allVideogames;
          let genresFiltered = action.payload === 'All' ?  state.allVideogames :  state.allVideogames.filter(el => el.genres.map(e => e).includes(action.payload)) 
-         while(genresFiltered.length !== 0){
+         if(genresFiltered.length !== 0){
         return{
           ...state,
           videogames: genresFiltered
           
-      }}
-      alert("I don't know found the genre of videoGame")
+      }} 
+      else{
+        alert("I don't know found the genre of videoGame");
+        return{
+          ...state
+        }
+      }
+     
+      break;
       case ORDER_NAME:
         let copy3 = state.videogames;
         let sortedName =
           action.payload === "asc"
             ? copy3.sort((a, b) => {
-                return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+                return a.name.localeCompare(b.name);
               })
             : copy3.sort((a, b) => {
-                return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
+                return b.name.localeCompare(a.name);
               });
         return {
           ...state,
@@ -100,9 +127,12 @@ const initialState = {
           videogames: sortedRating,
         };
       case GET_NAME_VIDEOGAME:
+        var json = state.allVideogames.find(el =>  el.name.toLowerCase() === action.payload)
+        console.log(action.payload, json)
         return {
+          
           ...state,
-          videogames: action.payload,
+          videogames: json ?[json]:false,
         };
       case GET_DETAILS:
         console.log("soy el reducer detail", action.payload)
